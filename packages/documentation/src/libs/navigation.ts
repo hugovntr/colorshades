@@ -17,9 +17,9 @@ export function documentation(): DocumentationLink[] {
         slug: parent,
         path: `/docs/${parent}`,
         children: getDocsList(parent).map((child) => ({
-            name: titleCase(child),
+            name: titleCase(child.replace(/\.md$/, "")),
             slug: child,
-            path: `/docs/${parent}/${child}`,
+            path: `/docs/${parent}/${child.replace(/\.md$/, "")}`,
         })),
     }));
 }

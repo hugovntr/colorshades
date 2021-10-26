@@ -62,21 +62,45 @@ module.exports = {
             red: colors.red,
 
             primary: { ...makeShades("primary") },
-            // primary: {
-            //     DEFAULT: "#A5DF36",
-            //     light: "#F8EF2A",
-            // },
-            secondary: {
-                DEFAULT: "#38491A",
-                light: "#557E59",
-            },
             ...defaultColors(),
-            ...shades("main", "#FF2013"),
+        },
+
+        extend: {
+            typography: (theme) => ({
+                DEFAULT: {
+                    css: {
+                        color: `rgb(${theme("colors.foreground")})`,
+                        strong: {
+                            color: `rgb(${theme("colors.strong")})`,
+                        },
+                        "h1, h2, h3, h4": {
+                            color: `rgb(${theme("colors.strong")})`,
+                        },
+                        h1: {
+                            fontSize: null,
+                        },
+                        h2: {
+                            fontSize: null,
+                        },
+                        h3: {
+                            fontSize: null,
+                        },
+                        h4: {
+                            fontSize: null,
+                        },
+                        code: {
+                            color: `rgb(${theme("colors.strong")})`,
+                        },
+                    },
+                },
+            }),
         },
     },
     corePlugins: {
         container: false,
     },
-    variants: {},
-    plugins: [],
+    variants: {
+        typography: [],
+    },
+    plugins: [require("@tailwindcss/typography")({ modifiers: [] })],
 };

@@ -1,7 +1,9 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 import App from "./app";
 import { DocumentationLink } from "@/libs/navigation";
+import { MinimizeIcon } from "@/components/icons";
+import { useRouter } from "next/router";
 
 type DocsProps = {
     children: ReactNode | undefined;
@@ -18,10 +20,11 @@ export default function Docs(props: DocsProps): JSX.Element {
                     : "ColorShades Documentation"
             }
         >
-            <div className="container space-x-4 flex">
-                <nav className="text-lg">
+            <div className="container space-x-4 flex md:space-x-16">
+                <nav className="text-lg space-y-3">
+                    <h4 className="mb-6">Documentation</h4>
                     {props.navigation.map((link) => (
-                        <NavigationElement {...link} />
+                        <NavigationElement {...link} key={link.slug} />
                     ))}
                 </nav>
                 <div className="flex-1">{props.children}</div>
@@ -31,11 +34,11 @@ export default function Docs(props: DocsProps): JSX.Element {
 }
 
 function NavigationElement(element: DocumentationLink): JSX.Element {
-    if (!element.children) return <NavigationRootItem {...element} />;
+    if (!element.children) return <NavigationRootLink {...element} />;
     return <NavigationParent {...element} />;
 }
 
-function NavigationRootItem({ name, path }: DocumentationLink): JSX.Element {
+function NavigationRootLink({ name, path }: DocumentationLink): JSX.Element {
     return (
         <Link href={path}>
             <a>{name}</a>
@@ -44,10 +47,36 @@ function NavigationRootItem({ name, path }: DocumentationLink): JSX.Element {
 }
 
 function NavigationParent({ name, children }: DocumentationLink): JSX.Element {
+    const [isOpen, open] = useState<boolean>(false);
+    const { asPath } = useRouter();
+
+    useEffect(() => {
+        const isChild = children.find((child) => child.path === asPath);
+        if (isChild) {
+            open(true);
+        }
+    }, [asPath]);
+
     return (
         <div>
-            <p>{name}</p>
-            <ul>
+            <button
+                onClick={() => open((state) => !state)}
+                className={`inline-flex items-center space-x-2 group ${
+                    isOpen ? "text-strong" : ""
+                }`}
+            >
+                <MinimizeIcon
+                    className={`w-6 h-6 text-smooth group-hover:text-primary-500 transition-colors duration-150 ${
+                        isOpen ? "rotate-0" : "-rotate-90"
+                    }`}
+                />
+                <span>{name}</span>
+            </button>
+            <ul
+                className={`border-l border-smooth ml-3 pl-4 text-base ${
+                    isOpen ? "block" : "hidden"
+                }`}
+            >
                 {children.map((child) => (
                     <NavigationChildren key={child.slug} {...child} />
                 ))}
@@ -57,10 +86,19 @@ function NavigationParent({ name, children }: DocumentationLink): JSX.Element {
 }
 
 function NavigationChildren({ name, path }: DocumentationLink): JSX.Element {
+    const { asPath } = useRouter();
     return (
         <li>
             <Link href={path}>
-                <a>{name}</a>
+                <a
+                    className={`ml-3 ${
+                        asPath.includes(path)
+                            ? "text-primary-500"
+                            : "hover:text-strong transition-colors duration-150"
+                    }`}
+                >
+                    {name}
+                </a>
             </Link>
         </li>
     );

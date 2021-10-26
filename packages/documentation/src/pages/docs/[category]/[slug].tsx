@@ -17,7 +17,16 @@ export default function Post({
             title={`${meta.title} - ${titleCase(category)}`}
             navigation={navigation}
         >
-            <article dangerouslySetInnerHTML={{ __html: content }}></article>
+            <article className="prose">
+                <header>
+                    <h1>{meta.title}</h1>
+                </header>
+
+                <section
+                    className="py-0"
+                    dangerouslySetInnerHTML={{ __html: content }}
+                ></section>
+            </article>
         </Docs>
     );
 }

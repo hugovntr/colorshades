@@ -22,6 +22,7 @@
     "devDependencies": {
         "@jsdevtools/rehype-toc": "^3.0.2",
         "@mapbox/rehype-prism": "^0.8.0",
+        "@tailwindcss/typography": "^0.4.1",
         "@types/react": "^17.0.30",
         "autoprefixer": "^10.3.7",
         "gray-matter": "^4.0.3",
