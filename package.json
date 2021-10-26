@@ -1,0 +1,19 @@
+{
+    "name": "colorshades-monorepo",
+    "private": true,
+    "prettier": {
+        "useTabs": false,
+        "tabWidth": 4,
+        "trailingComma": "es5"
+    },
+    "workspaces": [
+        "packages/*"
+    ],
+    "repository": "https://github.com/hugovntr/colorshades.git",
+    "author": {
+        "name": "Hugo Ventura"
+    },
+    "scripts": {
+        "colorshades": "yarn workspace colorshades"
+    }
+}

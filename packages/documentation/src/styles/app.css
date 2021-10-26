@@ -1,0 +1,170 @@
+@font-face {
+    font-family: "Inter";
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/fonts/Inter.var.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+        U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+        U+2215, U+FEFF, U+FFFD;
+}
+
+@tailwind base;
+html {
+    --scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+@layer base {
+    :root {
+        --color-page: toTailwind(theme("colors.gray.100"));
+        --color-background: toTailwind(theme("colors.white"));
+        --color-foreground: toTailwind(theme("colors.gray.500"));
+        --color-strong: toTailwind(theme("colors.gray.900"));
+        --color-smooth: toTailwind(theme("colors.gray.300"));
+        --color-primary-50: toTailwind(#f3f9e5);
+        --color-primary-100: toTailwind(#def2b7);
+        --color-primary-200: toTailwind(#c8eb86);
+        --color-primary-300: toTailwind(#a5df36);
+        --color-primary-400: toTailwind(#94d021);
+        --color-primary-500: toTailwind(#87be1e);
+        --color-primary-600: toTailwind(#6f9d19);
+        --color-primary-700: toTailwind(#577817);
+        --color-primary-800: toTailwind(#49611a);
+        --color-primary-900: toTailwind(#3a4a1a);
+    }
+    *.dark {
+        --color-page: toTailwind(#0a111e);
+        --color-background: toTailwind(theme("colors.gray.900"));
+        --color-foreground: toTailwind(theme("colors.gray.400"));
+        --color-strong: toTailwind(#f3f4f6);
+        --color-smooth: toTailwind(theme("colors.gray.700"));
+    }
+
+    ::selection {
+        @apply bg-primary-500 bg-opacity-50 text-strong;
+    }
+    ::-moz-selection {
+        @apply bg-primary-500 bg-opacity-50 text-strong;
+    }
+
+    body {
+        font-feature-settings: "cv01", "cv02", "cv03", "cv04", "cv09";
+        letter-spacing: -0.011em;
+        line-height: 1.75em;
+        @apply bg-page text-foreground;
+    }
+
+    section {
+        @apply py-24;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        margin-bottom: 1rem;
+        @apply text-strong;
+        font-synthesis: none;
+        font-feature-settings: "cv11", "cv01", "cv02", "cv03", "cv04", "cv09";
+    }
+
+    h1 {
+        font-weight: 700;
+        font-size: 3rem;
+        line-height: 3.75rem;
+    }
+    h2 {
+        font-weight: 700;
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+    h3 {
+        font-weight: 600;
+        font-size: 1.875rem;
+        line-height: 2rem;
+    }
+    h4 {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.75rem;
+    }
+    @screen lg {
+        h1 {
+            font-size: 4rem;
+            line-height: 4.825rem;
+        }
+        h2 {
+            font-size: 2.5rem;
+            line-height: 3.25rem;
+        }
+        h3 {
+            font-size: 2rem;
+            line-height: 2.5rem;
+        }
+    }
+
+    .container {
+        @apply max-w-7xl mx-auto;
+        @apply px-4 sm:px-6 lg:px-8;
+    }
+}
+
+@tailwind components;
+@layer components {
+    .button {
+        line-height: 1em;
+        font-feature-settings: "cv11", "cv01", "cv02", "cv03", "cv04", "cv09";
+        @apply inline-flex items-center space-x-2;
+        @apply px-6 py-3 rounded-full text-lg;
+        @apply bg-strong hover:bg-opacity-50 text-page;
+        @apply dark:bg-smooth dark:bg-opacity-25 dark:text-foreground dark:hover:bg-opacity-100 dark:hover:text-strong;
+        @apply transition-colors duration-150;
+    }
+    .button.primary {
+        @apply bg-primary-500 hover:bg-primary-800 text-primary-50;
+        @apply dark:bg-opacity-25 dark:text-primary-500 dark:hover:bg-primary-500 dark:hover:bg-opacity-100 dark:hover:text-primary-50;
+    }
+
+    .field {
+        @apply outline-none;
+        @apply px-6 py-3;
+        @apply rounded-full;
+        @apply ring-2 ring-smooth bg-background focus:ring-primary-500 focus:ring-4;
+        @apply placeholder-smooth;
+        @apply transition;
+    }
+
+    .withCounter {
+        counter-reset: counter;
+    }
+
+    .withCounter article {
+        position: relative;
+    }
+    .withCounter article::after {
+        position: absolute;
+        content: "";
+        width: 1px;
+        height: 2rem;
+        @apply bg-primary-500;
+        bottom: -1rem;
+        transform: translateY(100%);
+    }
+    .withCounter article:last-child::after {
+        display: none;
+    }
+
+    .withCounter .counterIncrement {
+        @apply flex flex-col items-center;
+    }
+
+    .withCounter .counterIncrement::before {
+        counter-increment: counter;
+        content: counter(counter);
+        @apply w-8 h-8 rounded-full flex items-center justify-center mb-4;
+        @apply text-base;
+        @apply bg-strong text-background;
+    }
+}
+
+@tailwind utilities;

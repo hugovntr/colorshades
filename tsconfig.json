@@ -1,0 +1,9 @@
+{
+    "references": [
+        { "path": "./packages/library" },
+        { "path": "./packages/documentation" }
+    ],
+    "files": [],
+    "include": [],
+    "exclude": ["**/node_modules"]
+}

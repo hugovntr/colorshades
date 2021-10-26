@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["esnext"],
+        "allowJs": true,
+        "strict": false,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "resolveJsonModule": false,
+        "rootDir": "src",
+        "outDir": "dist",
+        "baseUrl": "."
+    },
+    "ts-node": {
+        "compilerOptions": {
+            "module": "commonjs"
+        },
+        "files": true
+    },
+    "files": ["src/types/types.d.ts"],
+    "include": ["**/*.ts"],
+    "exclude": ["node_modules", "dist", "scripts"]
+}
