@@ -91,6 +91,16 @@ module.exports = {
                         code: {
                             color: `rgb(${theme("colors.strong")})`,
                         },
+                        pre: {
+                            backgroundColor: theme("colors.gray.900"),
+                        },
+                        a: {
+                            color: `rgb(${theme("colors.strong")})`,
+                            transition: "color 150ms",
+                            "&:hover": {
+                                color: `rgb(${theme("colors.primary.500")})`,
+                            },
+                        },
                     },
                 },
             }),

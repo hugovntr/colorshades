@@ -319,7 +319,10 @@ function Share(): JSX.Element {
                     </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                    <Link href="/" prefetch={false}>
+                    <Link
+                        href="https://github.com/hugovntr/colorshades"
+                        prefetch={false}
+                    >
                         <a
                             className="button dark:bg-background dark:text-strong dark:hover:bg-opacity-50"
                             target="_blank"

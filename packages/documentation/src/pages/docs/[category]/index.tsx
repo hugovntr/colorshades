@@ -10,26 +10,22 @@ export default function Index({
     category,
     navigation,
 }: {
-    docs: string[];
+    docs: DocumentationLink[];
     category: string;
     navigation: DocumentationLink[];
 }): JSX.Element {
     return (
         <Docs title={titleCase(category)} navigation={navigation}>
-            <ul>
-                <li className="font-semibold">
-                    List of documents in this category
-                </li>
-                {docs.map((d, i) => (
-                    <li key={i}>
-                        <Link
-                            href={`/docs/${category}/${d.replace(/\.md$/, "")}`}
-                        >
-                            {d}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            <h1>{titleCase(category)}</h1>
+            <section className="prose py-8">
+                <ul>
+                    {docs.map((doc) => (
+                        <li key={doc.slug}>
+                            <Link href={doc.path}>{doc.name}</Link>
+                        </li>
+                    ))}
+                </ul>
+            </section>
         </Docs>
     );
 }
@@ -47,7 +43,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const docs = getDocsList(params.category as string);
+    const docs: DocumentationLink[] = getDocsList(
+        params.category as string
+    ).map((doc) => ({
+        name: titleCase(doc.replace(/\.md$/, "")),
+        slug: doc,
+        path: `/docs/${params.category}/${doc.replace(/\.md$/, "")}`,
+    }));
     const navigation = documentation();
     return {
         props: {

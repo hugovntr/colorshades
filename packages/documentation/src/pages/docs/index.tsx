@@ -5,7 +5,7 @@ import { GetStaticProps } from "next";
 export default function Index({ navigation }): JSX.Element {
     return (
         <Docs navigation={navigation}>
-            <p>Hello world</p>
+            <h1>Documentation</h1>
         </Docs>
     );
 }

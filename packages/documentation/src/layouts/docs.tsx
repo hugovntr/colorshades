@@ -20,9 +20,8 @@ export default function Docs(props: DocsProps): JSX.Element {
                     : "ColorShades Documentation"
             }
         >
-            <div className="container space-x-4 flex md:space-x-16">
-                <nav className="text-lg space-y-3">
-                    <h4 className="mb-6">Documentation</h4>
+            <div className="container space-x-4 flex items-start md:space-x-16">
+                <nav className="space-y-3">
                     {props.navigation.map((link) => (
                         <NavigationElement {...link} key={link.slug} />
                     ))}
@@ -61,7 +60,7 @@ function NavigationParent({ name, children }: DocumentationLink): JSX.Element {
         <div>
             <button
                 onClick={() => open((state) => !state)}
-                className={`inline-flex items-center space-x-2 group ${
+                className={`inline-flex items-center font-semibold space-x-2 group ${
                     isOpen ? "text-strong" : ""
                 }`}
             >
@@ -73,7 +72,7 @@ function NavigationParent({ name, children }: DocumentationLink): JSX.Element {
                 <span>{name}</span>
             </button>
             <ul
-                className={`border-l border-smooth ml-3 pl-4 text-base ${
+                className={`border-l border-smooth ml-3 pl-4 text-base space-y-2 ${
                     isOpen ? "block" : "hidden"
                 }`}
             >

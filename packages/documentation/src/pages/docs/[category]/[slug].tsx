@@ -17,7 +17,7 @@ export default function Post({
             title={`${meta.title} - ${titleCase(category)}`}
             navigation={navigation}
         >
-            <article className="prose">
+            <article className="prose max-w-3xl">
                 <header>
                     <h1>{meta.title}</h1>
                 </header>

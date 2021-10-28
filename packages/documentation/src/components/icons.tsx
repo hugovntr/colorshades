@@ -2,6 +2,33 @@ type IconProps = {
     className?: string;
 };
 
+export function ColorShadesIcon(props: IconProps): JSX.Element {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 80 80"
+            {...props}
+        >
+               
+            <path
+                fill="currentColor"
+                d="M34 35.62C33.267 26.928 27.067 22 18.467 22 9.267 22 2 28.297 2 40c0 11.652 7.067 18 16.467 18 10 0 15.066-7.118 15.533-13.072l-9.4-.069c-.467 2.995-2.533 4.86-5.933 4.86-4.517 0-7.134-3.285-7.134-9.719 0-6.091 2.534-9.719 7.2-9.719 3.567 0 5.6 2.156 5.867 5.339H34z"
+            />
+               
+            <rect
+                width={36}
+                height={36}
+                x={42}
+                y={22}
+                fill="currentColor"
+                className="text-primary-400 transition-colors duration-300"
+                rx={9}
+            />
+        </svg>
+    );
+}
+
 export function DuplicateIcon(props: IconProps): JSX.Element {
     return (
         <svg
