@@ -20,10 +20,6 @@ export default function Index(): JSX.Element {
             <ShadesShowcase />
             <HowItWorks />
             <Share />
-
-            {/* Footer */}
-            <div className="h-0"></div>
-            {/* End Footer */}
         </App>
     );
 }

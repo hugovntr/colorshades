@@ -1,16 +1,20 @@
 <p align="center">
     <a href="https://colorshad.es">
-        <img src="packages/documentation/public/favicon_180.png" alt="ColorShades Logo" height="180">
+        <img src="https://github.com/hugovntr/colorshades/raw/master/packages/documentation/public/favicon_180.png" alt="ColorShades Logo" height="180">
     </a>
     <p align="center">Create unique color shades <strong>in seconds</strong></p>
 </p>
 <br />
 <p align="center">
-    <a aria-label="Vercel" href="https://vercel.com">
-        <img src="https://img.shields.io/badge/HOSTED%20ON%20vercel-white.svg?style=for-the-badge&labelColor=000&logo=vercel&logoWidth=20" alt="Hosted By Vercel">
-    </a>
     <a aria-label="Let's talk" href="https://twitter.com/@hugovntr">
-        <img src="https://img.shields.io/badge/lets%20talk-FFF.svg?style=for-the-badge&labelColor=A5DF36&logo=twitter&logoWidth=20&logoColor=384c15" alt="Let's talk">
+        <img src="https://img.shields.io/badge/lets%20talk-FFF.svg?style=for-the-badge&labelColor=38BDF8&logo=twitter&logoWidth=20&logoColor=F0F9FF" alt="Let's talk">
+    </a>
+    <a aria-label="Contribute to the project" href="https://github.com/hugovntr/colorshades/discussions">
+        <img src="https://img.shields.io/badge/contribute%20to%20the%20project-0F172A.svg?style=for-the-badge&labelColor=334155&logo=github&logoWidth=20&logoColor=FFF" alt="Contribute to the project">
+    </a>
+    <br/>
+    <a aria-label="Downloads" href="https://www.npmjs.com/package/colorshades">
+        <img src="https://img.shields.io/npm/dt/colorshades?style=for-the-badge&labelColor=334155&logo=npm&logoWidth=20" alt="Downloads">
     </a>
 </p>
 
@@ -29,3 +33,7 @@ Please see the [contributing guide](/CONTRIBUTING.md).
 ## License
 
 **ColorShades** is distributed under [MIT License](/LICENSE.md).
+
+### Credits
+
+ColorShades is hosted by [Vercel](https://vercel.com) and uses [TailwindCSS](https://tailwindcss.com/docs/customizing-colors#color-palette-reference) colors for references and data matching

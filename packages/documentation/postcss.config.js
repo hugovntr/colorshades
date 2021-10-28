@@ -1,5 +1,5 @@
 function toTailwind(value) {
-    hex = value.replace("#", "");
+    let hex = value.replace("#", "");
     if (hex.length === 3) {
         hex = hex
             .split("")
