@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://colorshad.es">
-        <img src="https://raw.githubusercontent.com/hugovntr/colorshades/master/.github/art/logo.png" alt="ColorShades Logo" height="180">
+        <img src=".github/art/logo.png" alt="ColorShades Logo" height="180">
     </a>
     <p align="center">Create unique color shades <strong>in seconds</strong></p>
 </p>
@@ -22,7 +22,7 @@
 
 For a complete tour of what is ColorShades and how it works, visit our documentation at [colorshad.es](https://colorshad.es/docs).
 
-[![ColorShades](https://raw.githubusercontent.com/hugovntr/colorshades/master/.github/art/banner.png)](https://colorshad.es)
+[![ColorShades](.github/art/banner.png)](https://colorshad.es)
 
 ## Community
 
