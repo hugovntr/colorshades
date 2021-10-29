@@ -67,15 +67,15 @@ export function ColorToast({
             >
                 <button
                     onClick={minimize}
-                    className="bg-black text-primary-50 bg-opacity-20 hover:bg-opacity-50 transition-colors py-1 px-3 rounded-bl-md"
+                    className="bg-black text-primary-50 bg-opacity-20 hover:bg-opacity-50 transition-colors py-1 px-3 h-7 rounded-bl-md"
                 >
                     <MinimizeIcon className="w-5 h-5" />
                 </button>
                 <button
                     onClick={vanish}
-                    className="bg-black text-primary-50 bg-opacity-20 hover:bg-opacity-50 transition-colors py-1 px-3 rounded-tr-xl"
+                    className="bg-black text-primary-50 bg-opacity-20 hover:bg-opacity-50 transition-colors py-1 px-3 h-7 rounded-tr-xl"
                 >
-                    <CloseIcon className="w-5 h-5" />
+                    <CloseIcon className="w-4 h-4" />
                 </button>
             </figure>
             <p className="text-strong text-lg mt-4 leading-none select-all">
