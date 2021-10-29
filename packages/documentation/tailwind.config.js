@@ -1,6 +1,5 @@
 const colors = require("tailwindcss/colors");
 const { fontFamily } = require("tailwindcss/defaultTheme");
-const shades = require("colorshades/tailwind");
 
 const handleOpacity = (name, { opacityVariable, opacityValue }) => {
     if (opacityValue !== undefined)

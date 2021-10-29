@@ -1,17 +1,12 @@
-import createShades from "./index";
+import { ColorManager } from "./colors";
+import { ShadesManager } from "./shades";
 
 export type TailwindShades = {
-    [key: string]: {
-        [key: number]: string;
-    };
+    [key: number]: string;
 };
 
-export default function shades(name: string, color: string): TailwindShades {
-    const shades = createShades(color);
+export function shades(color: string): TailwindShades {
+    const result = new ShadesManager(new ColorManager(color));
 
-    return {
-        [name]: {
-            ...shades.toJSON(),
-        },
-    };
+    return { ...result.toJSON() };
 }

@@ -3,7 +3,7 @@
     "version": "1.0.0-alpha.2",
     "description": "Making shades from a single color as never been easier",
     "main": "dist/index.js",
-    "types": "dist/types/index.d.ts",
+    "types": "./dist/index.d.ts",
     "repository": "https://github.com/hugovntr/colorshades.git",
     "bugs": "https://github.com/hugovntr/colorshades/issues",
     "author": "Hugo Ventura",
@@ -13,10 +13,15 @@
         "tabWidth": 4,
         "trailingComma": "es5"
     },
+    "files": [
+        "dist",
+        "tailwind.js",
+        "tailwind.d.ts"
+    ],
     "scripts": {
         "dev": "tsc --watch",
         "build": "tsc --build",
-        "types": "tsc src/index.ts --declaration --emitDeclarationOnly --declarationDir dist/types --esModuleInterop",
+        "types": "tsc --declaration --emitDeclarationOnly --declarationDir dist --esModuleInterop",
         "boundaries": "ts-node -O '{\"module\":\"commonjs\"}' scripts/boundaries.ts"
     },
     "engines": {
