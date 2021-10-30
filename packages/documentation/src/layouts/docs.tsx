@@ -4,6 +4,7 @@ import App from "./app";
 import { DocumentationLink } from "@/libs/navigation";
 import { MinimizeIcon } from "@/components/icons";
 import { useRouter } from "next/router";
+import Spotlight from "@/components/spotlight";
 
 type DocsProps = {
     children: ReactNode | undefined;
@@ -20,6 +21,7 @@ export default function Docs(props: DocsProps): JSX.Element {
                     : "ColorShades Documentation"
             }
         >
+            <Spotlight initial={props.navigation} />
             <div className="container space-x-4 flex items-start md:space-x-16">
                 <nav className="space-y-3">
                     {props.navigation.map((link) => (
