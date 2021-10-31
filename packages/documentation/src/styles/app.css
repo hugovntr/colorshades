@@ -21,6 +21,7 @@ html {
         --color-foreground: toTailwind(theme("colors.gray.500"));
         --color-strong: toTailwind(theme("colors.gray.900"));
         --color-smooth: toTailwind(theme("colors.gray.300"));
+        --color-accents: toTailwind(theme("colors.gray.200"));
         --color-primary-50: toTailwind(#f3f9e5);
         --color-primary-100: toTailwind(#def2b7);
         --color-primary-200: toTailwind(#c8eb86);
@@ -38,6 +39,7 @@ html {
         --color-foreground: toTailwind(theme("colors.gray.400"));
         --color-strong: toTailwind(#f3f4f6);
         --color-smooth: toTailwind(theme("colors.gray.700"));
+        --color-accents: toTailwind(theme("colors.gray.800"));
     }
 
     ::selection {
@@ -106,6 +108,13 @@ html {
     .container {
         @apply max-w-7xl mx-auto;
         @apply px-4 sm:px-6 lg:px-8;
+    }
+
+    kbd {
+        @apply inline-flex items-center justify-center bg-accents;
+        @apply text-sm rounded leading-none font-mono px-1;
+        height: 1.25rem;
+        min-width: 1.5rem;
     }
 }
 

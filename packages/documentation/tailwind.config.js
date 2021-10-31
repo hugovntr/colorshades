@@ -10,7 +10,14 @@ const handleOpacity = (name, { opacityVariable, opacityValue }) => {
 };
 
 const defaultColors = () => {
-    let names = ["page", "background", "foreground", "strong", "smooth"];
+    let names = [
+        "page",
+        "background",
+        "foreground",
+        "strong",
+        "smooth",
+        "accents",
+    ];
 
     let colorsObj = {};
     for (let i = 0; i < names.length; i++) {

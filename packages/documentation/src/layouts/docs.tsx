@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 import App from "./app";
 import { DocumentationLink } from "@/libs/navigation";
-import { MinimizeIcon } from "@/components/icons";
+import { CommandIcon, MinimizeIcon } from "@/components/icons";
 import { useRouter } from "next/router";
 import Spotlight from "@/components/spotlight";
 
@@ -13,6 +13,12 @@ type DocsProps = {
 };
 
 export default function Docs(props: DocsProps): JSX.Element {
+    const [spotlightOpen, setSpotlightOpen] = useState<boolean>(false);
+
+    const handleSpotlightClose = () => {
+        setSpotlightOpen((state) => false);
+    };
+
     return (
         <App
             title={
@@ -21,13 +27,33 @@ export default function Docs(props: DocsProps): JSX.Element {
                     : "ColorShades Documentation"
             }
         >
-            <Spotlight initial={props.navigation} />
-            <div className="container space-x-4 flex items-start md:space-x-16">
-                <nav className="space-y-3">
-                    {props.navigation.map((link) => (
-                        <NavigationElement {...link} key={link.slug} />
-                    ))}
-                </nav>
+            <Spotlight
+                initial={props.navigation}
+                open={spotlightOpen}
+                onClose={handleSpotlightClose}
+            />
+            <div className="container space-x-4 flex flex-col md:flex-row md:items-start space-y-8 md:space-x-16 md:space-y-0">
+                <div className="space-y-3">
+                    <button
+                        onClick={() => setSpotlightOpen(true)}
+                        className="button bg-accents text-base hidden md:flex justify-between items-center w-full md:w-44 group"
+                    >
+                        <span className="text-strong">Search</span>
+                        <span className="inline-flex space-x-1 group-hover:opacity-0 transition-opacity duration-150">
+                            <kbd className="bg-smooth text-foreground dark:bg-accents">
+                                <CommandIcon className="w-4 h-4" />
+                            </kbd>
+                            <kbd className="bg-smooth text-foreground dark:bg-accents">
+                                K
+                            </kbd>
+                        </span>
+                    </button>
+                    <nav>
+                        {props.navigation.map((link) => (
+                            <NavigationElement {...link} key={link.slug} />
+                        ))}
+                    </nav>
+                </div>
                 <div className="flex-1">{props.children}</div>
             </div>
         </App>
@@ -74,7 +100,7 @@ function NavigationParent({ name, children }: DocumentationLink): JSX.Element {
                 <span>{name}</span>
             </button>
             <ul
-                className={`border-l border-smooth ml-3 pl-4 text-base space-y-2 ${
+                className={`border-l border-smooth ml-3 mb-4 pl-4 text-base space-y-2 ${
                     isOpen ? "block" : "hidden"
                 }`}
             >

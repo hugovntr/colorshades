@@ -7,19 +7,27 @@ import { useRouter } from "next/router";
 import { DocumentationLink } from "@/libs/navigation";
 import useSearch from "@/hooks/useSearch";
 
+type SpotlightProps = {
+    initial: DocumentationLink[];
+    onClose: () => void;
+    open?: boolean;
+};
+
 export default function Spotlight({
     initial,
-}: {
-    initial: DocumentationLink[];
-}): JSX.Element {
-    const { ref, visible, setVisible } = useComponentVisible(false);
-    const [activeItem, setActiveItem] = useState(null);
+    onClose,
+    open = false,
+}: SpotlightProps): JSX.Element {
+    const { ref, visible, setVisible } = useComponentVisible(false, onClose);
+    const [activeItem, setActiveItem] = useState<SpotlightItem>(null);
+    const [commandMode, setCommandMode] = useState<boolean>(false);
+    const [query, setQuery] = useState<string>("");
     const inputRef = useRef<HTMLInputElement>(null);
     const { change } = useScheme();
     const router = useRouter();
-    const [searchResult, setQuery] = useSearch([
+    const [searchResult, setSearchQuery] = useSearch<SpotlightItem>([
         ...initial.reduce((all, current) => {
-            const items = current.children.map((child) => ({
+            const items = current.children.map<SpotlightItem>((child) => ({
                 name: child.name,
                 type: "document",
                 category: current.name,
@@ -60,6 +68,12 @@ export default function Spotlight({
             default:
                 break;
         }
+
+        if (e.key === "Backspace") {
+            if (!inputRef.current.value && commandMode) {
+                setCommandMode((state) => false);
+            }
+        }
     };
 
     const handleActivation = (e: KeyboardEvent) => {
@@ -68,7 +82,7 @@ export default function Spotlight({
         }
     };
 
-    const handleMouseEnter = (item) => {
+    const handleMouseEnter = (item: SpotlightItem) => {
         setActiveItem(item);
     };
 
@@ -86,11 +100,25 @@ export default function Spotlight({
         }
 
         setVisible((state) => !state);
+        onClose();
     };
 
     const handleQueryChange = (e: FormEvent<HTMLInputElement>) => {
-        setQuery(e.currentTarget.value);
+        let value = e.currentTarget.value;
+        if (value.startsWith(">")) {
+            setCommandMode(true);
+            inputRef.current.value = inputRef.current.value.substr(1);
+            value = value.substr(1);
+        }
+        setQuery((state) => value);
     };
+
+    useEffect(() => {
+        setSearchQuery({
+            type: commandMode ? "command" : null,
+            value: query,
+        });
+    }, [query, commandMode]);
 
     useEffect(() => {
         if (visible) {
@@ -98,7 +126,9 @@ export default function Spotlight({
             window.addEventListener("keydown", handleNavigation);
         } else {
             window.addEventListener("keydown", handleActivation);
-            setQuery((state) => null);
+            setSearchQuery((state) => null);
+            setQuery((state) => "");
+            setCommandMode((state) => false);
             inputRef.current.value = "";
             inputRef.current.blur();
         }
@@ -106,11 +136,23 @@ export default function Spotlight({
             window.removeEventListener("keydown", handleNavigation);
             window.removeEventListener("keydown", handleActivation);
         };
-    }, [visible, activeItem, searchResult, setQuery, inputRef]);
+    }, [
+        visible,
+        activeItem,
+        searchResult,
+        setSearchQuery,
+        inputRef,
+        setCommandMode,
+        setQuery,
+    ]);
 
     useEffect(() => {
         setActiveItem((state) => searchResult[0]);
     }, [searchResult, setActiveItem]);
+
+    useEffect(() => {
+        setVisible((state) => open);
+    }, [open]);
 
     return (
         <div
@@ -122,23 +164,36 @@ export default function Spotlight({
         >
             <div
                 ref={ref}
-                className={`bg-background shadow-xl rounded-2xl max-w-2xl mx-auto mt-32 transition-transform duration-700 ${
+                className={`bg-background dark:bg-page dark:border border-smooth shadow-xl rounded-2xl max-w-2xl mx-auto mt-32 transition-transform duration-700 ${
                     visible
                         ? "translate-y-0"
                         : "-translate-y-8 motion-reduce:translate-y-0"
                 }`}
             >
-                <input
-                    type="text"
-                    ref={inputRef}
-                    onChange={handleQueryChange}
-                    className="appearance-none bg-background w-full px-4 py-3 border-b border-smooth rounded-t-2xl outline-none"
-                    placeholder="Search something..."
-                />
+                <div className="bg-background dark:bg-page w-full border-b border-smooth rounded-t-2xl overflow-hidden flex items-center">
+                    {commandMode && <kbd className="px-2 ml-4">Command</kbd>}
+                    <input
+                        type="text"
+                        ref={inputRef}
+                        onChange={handleQueryChange}
+                        className="appearance-none flex-1 px-4 py-3 bg-background dark:bg-page outline-none"
+                        placeholder="Search something..."
+                    />
+                </div>
 
                 <div className="p-4 space-y-3">
                     <p className="text-sm">
-                        Prefix your search with <kbd>&gt;</kbd> for commands
+                        {!commandMode ? (
+                            <>
+                                Prefix your search with <kbd>&gt;</kbd> for
+                                commands
+                            </>
+                        ) : (
+                            <>
+                                Clear your search and press <kbd>Backspace</kbd>{" "}
+                                to exit command search
+                            </>
+                        )}
                     </p>
                     <div className="grid gap-2">
                         {searchResult.map((item, index) => (
@@ -180,7 +235,7 @@ function SpotlightDocumentItem({ name, category, isActive }): JSX.Element {
     return (
         <div
             className={`flex items-start p-2 -mx-2 space-x-2 rounded-lg transition-colors duration-150 cursor-pointer ${
-                isActive ? "bg-page" : ""
+                isActive ? "bg-page dark:bg-background" : ""
             }`}
         >
             <DuplicateIcon className="w-5 h-5" />
@@ -189,8 +244,10 @@ function SpotlightDocumentItem({ name, category, isActive }): JSX.Element {
                 <span className="text-xs">{category}</span>
             </div>
             <p
-                className={`text-sm opacity-0 translate-x-4 transition duration-300 ${
-                    isActive ? "translate-x-0 opacity-100" : ""
+                className={`text-sm transition duration-300 ${
+                    isActive
+                        ? "translate-x-0 opacity-100"
+                        : "opacity-0 translate-x-4"
                 }`}
             >
                 Jump to
@@ -203,7 +260,7 @@ function SpotlightCommandItem({ name, Icon, isActive }): JSX.Element {
     return (
         <div
             className={`flex items-start p-2 -mx-2 space-x-2 rounded-lg transition-colors duration-150 cursor-pointer ${
-                isActive ? "bg-page" : ""
+                isActive ? "bg-page dark:bg-background" : ""
             } `}
         >
             <Icon className="w-5 h-5" />

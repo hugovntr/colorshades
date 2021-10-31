@@ -208,3 +208,20 @@ export function TwitterIcon(props: IconProps): JSX.Element {
         </svg>
     );
 }
+
+export function CommandIcon(props: IconProps): JSX.Element {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            {...props}
+        >
+            <path
+                stroke="currentColor"
+                strokeWidth={2}
+                d="M6.5 3v0A3.5 3.5 0 003 6.5v0A3.5 3.5 0 006.5 10h11A3.5 3.5 0 0021 6.5v0A3.5 3.5 0 0017.5 3v0A3.5 3.5 0 0014 6.5v11a3.5 3.5 0 003.5 3.5v0a3.5 3.5 0 003.5-3.5v0a3.5 3.5 0 00-3.5-3.5h-11A3.5 3.5 0 003 17.5v0A3.5 3.5 0 006.5 21v0a3.5 3.5 0 003.5-3.5v-11A3.5 3.5 0 006.5 3z"
+            />
+        </svg>
+    );
+}

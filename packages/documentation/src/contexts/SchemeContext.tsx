@@ -37,8 +37,6 @@ const systemMode = (matches: boolean) => {
     else setLight();
 };
 
-type Scheme = "system" | "dark" | "light";
-
 type SchemeContextType = {
     scheme: Scheme;
     change: (newScheme: Scheme) => void;

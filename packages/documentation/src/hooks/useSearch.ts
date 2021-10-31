@@ -6,40 +6,36 @@ import {
     useState,
 } from "react";
 
-export default function useSearch(
-    searchable: any[]
-): [any[], Dispatch<SetStateAction<string>>] {
-    const [query, setQuery] = useState<string>(null);
-    const [items, setItems] = useState<any[]>(searchable);
+export default function useSearch<T extends Searchable>(
+    searchable: T[]
+): [T[], Dispatch<SetStateAction<SearchQuery>>] {
+    const [query, setQuery] = useState<SearchQuery>(null);
+    const [items, setItems] = useState<T[]>(searchable);
 
-    const search = useCallback(
-        (types?: string[]) => {
-            if (types) {
-                setItems((state) =>
-                    searchable.filter(
-                        (s) =>
-                            s.name.toLowerCase().includes(query.substr(1)) &&
-                            types.includes(s.type)
-                    )
-                );
-            } else {
-                setItems((state) =>
-                    searchable.filter((s) =>
-                        s.name.toLowerCase().includes(query)
-                    )
-                );
-            }
-        },
-        [query]
-    );
+    const search = useCallback(() => {
+        if (query.type) {
+            setItems((state) =>
+                searchable.filter(
+                    ({ name, type }) =>
+                        name.toLowerCase().includes(query.value) &&
+                        type === query.type
+                )
+            );
+        } else {
+            setItems((state) =>
+                searchable.filter(({ name }) =>
+                    name.toLowerCase().includes(query.value)
+                )
+            );
+        }
+    }, [query]);
 
     useEffect(() => {
         if (!query) {
             setItems((state) => searchable);
             return;
         }
-
-        search(query.startsWith(">") ? ["command"] : null);
+        search();
     }, [query]);
 
     return [items, setQuery];
