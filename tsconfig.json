@@ -1,7 +1,7 @@
 {
     "references": [
         { "path": "./packages/library" },
-        { "path": "./packages/documentation" }
+        { "path": "./packages/app" }
     ],
     "files": [],
     "include": [],
