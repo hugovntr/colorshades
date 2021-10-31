@@ -15,5 +15,8 @@
     },
     "scripts": {
         "colorshades": "yarn workspace colorshades"
+    },
+    "devDependencies": {
+        "lerna": "^4.0.0"
     }
 }
