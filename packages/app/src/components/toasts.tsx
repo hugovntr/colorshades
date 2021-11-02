@@ -1,4 +1,4 @@
-import { Color } from "colorshades";
+import type { Color } from "colorshades";
 import { useState, useEffect, MouseEvent } from "react";
 import { CloseIcon, MinimizeIcon } from "./icons";
 

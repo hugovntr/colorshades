@@ -42,7 +42,7 @@ export default function App(props: AppProps): JSX.Element {
                     content="Create unique color shades in seconds"
                     name="description"
                 />
-                <meta property="og:url" content="https://colorshad.es" />
+                <meta property="og:url" content="https://colorshades.app" />
                 <meta property="og:type" content="website" />
                 <meta property="og:site_name" content="ColorShades" />
                 <meta
