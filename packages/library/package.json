@@ -35,5 +35,6 @@
     },
     "dependencies": {
         "tailwindcss": "^2.2.19"
-    }
+    },
+    "gitHead": "b795de06b156fa69d06bd70ff7079e536af07122"
 }

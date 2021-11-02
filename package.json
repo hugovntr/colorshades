@@ -17,7 +17,7 @@
         "version-canary": "lerna version prerelease --sign-git-tag --preid canary --ignore-changes 'packages/app/**' --force-publish",
         "version-stable": "lerna version --sign-git-tag --ignore-changes 'packages/app/**'",
         "publish-canary": "lerna publish --canary",
-        "publish-stable": "lerna publish",
+        "publish-stable": "lerna publish --force-publish --sign-git-tag",
         "prepublish": "lerna run prepublish"
     },
     "devDependencies": {

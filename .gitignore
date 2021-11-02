@@ -35,3 +35,5 @@ yarn-error.log*
 
 # data
 data/create/*.js
+
+*.log
