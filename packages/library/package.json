@@ -5,6 +5,7 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "repository": "https://github.com/hugovntr/colorshades.git",
+    "homepage": "https://colorshades.app",
     "bugs": "https://github.com/hugovntr/colorshades/issues",
     "author": "Hugo Ventura",
     "license": "MIT",
