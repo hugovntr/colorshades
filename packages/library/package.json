@@ -31,9 +31,7 @@
     },
     "devDependencies": {
         "ts-node": "^10.4.0",
-        "typescript": "^4.4.4"
-    },
-    "dependencies": {
+        "typescript": "^4.4.4",
         "tailwindcss": "^2.2.19"
     },
     "gitHead": "34caaa68ef2af1792475b07dc3492cf9a83bb2bc"
