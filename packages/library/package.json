@@ -23,7 +23,7 @@
         "build": "tsc --build",
         "types": "tsc --declaration --emitDeclarationOnly --declarationDir dist --esModuleInterop",
         "boundaries": "ts-node -O '{\"module\":\"commonjs\"}' scripts/boundaries.ts",
-        "prerelease": "lerna version prerelease --preid canary"
+        "preversion": "yarn boundaries && yarn build && yarn types"
     },
     "engines": {
         "node": ">=12.13.0"

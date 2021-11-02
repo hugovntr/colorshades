@@ -14,7 +14,8 @@
         "name": "Hugo Ventura"
     },
     "scripts": {
-        "colorshades": "yarn workspace colorshades"
+        "canary": "lerna version prerelease --preid canary",
+        "prepublish": "lerna run prepublish"
     },
     "devDependencies": {
         "lerna": "^4.0.0"
