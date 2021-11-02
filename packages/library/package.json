@@ -1,6 +1,6 @@
 {
     "name": "colorshades",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Making shades from a single color as never been easier",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -36,5 +36,5 @@
     "dependencies": {
         "tailwindcss": "^2.2.19"
     },
-    "gitHead": "b795de06b156fa69d06bd70ff7079e536af07122"
+    "gitHead": "34caaa68ef2af1792475b07dc3492cf9a83bb2bc"
 }
