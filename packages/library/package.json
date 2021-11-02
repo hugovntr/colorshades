@@ -1,6 +1,6 @@
 {
     "name": "colorshades",
-    "version": "1.0.0-canary.3",
+    "version": "1.0.1-canary.0",
     "description": "Making shades from a single color as never been easier",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
