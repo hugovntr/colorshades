@@ -1,4 +1,4 @@
-const hueBoundaries = [
+export default [
     {
         name: "rose",
         isGray: false,
@@ -1716,5 +1716,3 @@ const hueBoundaries = [
         ],
     },
 ];
-
-export default hueBoundaries;

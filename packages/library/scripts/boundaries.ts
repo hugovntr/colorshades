@@ -1,6 +1,6 @@
 import { writeFile } from "fs";
 import { join } from "path";
-import { createColor } from "../src/index";
+import { Color, createColor } from "../src/index";
 import { inspect } from "util";
 import defaultColors from "tailwindcss/colors";
 
@@ -61,7 +61,7 @@ function boundariesForShades(colors: Color[]) {
 }
 
 const shades = getDefaultReferences().map(
-    (reference: { name: string; colors: any }, i) => {
+    (reference: { name: string; colors: any[] }, i) => {
         const colors = Object.values(reference.colors).map(
             (value: string, i) => {
                 return createColor(
@@ -123,7 +123,7 @@ const data = inspect(
 
 writeFile(
     join(process.cwd(), "src", "data", "boundaries.js"),
-    `module.export = ${data}`,
+    `export default ${data}`,
     (err) => {
         if (err) throw err;
         console.log("✅ Done");
