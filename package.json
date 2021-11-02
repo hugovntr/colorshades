@@ -14,7 +14,8 @@
         "name": "Hugo Ventura"
     },
     "scripts": {
-        "canary": "lerna version prerelease --sign-git-tag --preid canary --ignore-changes 'packages/app/**' --force-publish",
+        "version-canary": "lerna version prerelease --sign-git-tag --preid canary --ignore-changes 'packages/app/**' --force-publish",
+        "publish-canary": "lerna publish --canary",
         "prepublish": "lerna run prepublish"
     },
     "devDependencies": {
