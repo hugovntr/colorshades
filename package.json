@@ -15,7 +15,7 @@
     },
     "scripts": {
         "version-canary": "lerna version prerelease --sign-git-tag --preid canary --ignore-changes 'packages/app/**' --force-publish",
-        "publish-canary": "lerna publish --canary",
+        "publish-canary": "lerna publish --canary from-git",
         "prepublish": "lerna run prepublish"
     },
     "devDependencies": {
