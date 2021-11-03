@@ -1,6 +1,6 @@
 {
     "name": "colorshades",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Making shades from a single color as never been easier",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
