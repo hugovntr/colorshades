@@ -50,8 +50,13 @@ export default function App(props: AppProps): JSX.Element {
                     content="Create unique color shades in seconds"
                 />
                 <meta property="og:title" content="ColorShades" />
+                <meta
+                    property="og:image"
+                    content="https://colorshades.app/banner.png"
+                />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@hugovntr" />
+                <meta name="twitter:creator" content="@hugovntr" />
                 <meta name="twitter:title" content="ColorShades" />
                 <meta
                     name="twitter:description"
