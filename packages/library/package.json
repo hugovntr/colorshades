@@ -32,15 +32,18 @@
     "scripts": {
         "dev": "tsc --watch",
         "build": "tsc --build",
+        "swcify": "swc src --out-dir dist --sync",
         "types": "tsc --declaration --emitDeclarationOnly --declarationDir dist --esModuleInterop",
         "boundaries": "ts-node -O '{\"module\":\"commonjs\"}' scripts/boundaries.ts",
-        "preversion": "yarn boundaries && yarn build && yarn types",
+        "preversion": "yarn boundaries && yarn swcify && yarn types",
         "prepublish": "yarn preversion"
     },
     "engines": {
         "node": ">=12.13.0"
     },
     "devDependencies": {
+        "@swc/cli": "^0.1.51",
+        "@swc/core": "^1.2.106",
         "tailwindcss": "^2.2.19",
         "ts-node": "^10.4.0",
         "typescript": "^4.4.4"

@@ -1,0 +1,24 @@
+{
+    "exclude": ["types"],
+    "jsc": {
+        "parser": {
+            "syntax": "typescript"
+        },
+        "baseUrl": ".",
+        "target": "es5",
+        "loose": false,
+        "minify": {
+            "compress": false,
+            "mangle": false
+        }
+    },
+    "module": {
+        "type": "commonjs"
+    },
+    "minify": true,
+    "env": {
+        "targets": {
+            "node": "12.13.0"
+        }
+    }
+}
