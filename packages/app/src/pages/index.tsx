@@ -26,8 +26,8 @@ export default function Index(): JSX.Element {
 
 function Title(): JSX.Element {
     return (
-        <section id="header" className="pt-0">
-            <div className="container bg-background rounded-3xl py-24 text-center">
+        <section id="header" className="pt-0 container">
+            <div className="bg-background rounded-3xl py-12 lg:py-24 px-4 text-center">
                 <div className="max-w-4xl mx-auto">
                     <h1>
                         Create unique color <br className="hidden sm:block" />
@@ -39,7 +39,7 @@ function Title(): JSX.Element {
                     Tired of wasting precious hours trying to figure out the
                     perfect shades for your vibrant brand color?
                 </p>
-                <div className="space-x-4 mt-16">
+                <div className="flex flex-col sm:flex-row items-center sm:justify-center space-y-2 sm:space-y-0 sm:space-x-4 mt-6 md:mt-16">
                     <a href="#get-started" className="button primary">
                         Get started !
                     </a>
@@ -145,8 +145,7 @@ function ShadesShowcase(): JSX.Element {
         >
             <div className="max-w-xl mx-auto flex flex-col items-center lg:items-start">
                 <h2 className="text-center lg:text-left">
-                    Say hello to your
-                    <br className="hidden xl:block" />
+                    Say hello to your <br className="hidden xl:block" />
                     <span className="text-primary-500">color shades</span>
                 </h2>
                 <div className="space-y-4">

@@ -76,7 +76,7 @@ function Navigation(): JSX.Element {
         <div>
             <div
                 id="nav"
-                className="container py-6 mb-12 flex justify-between items-center"
+                className="container py-6 lg:mb-12 flex justify-between items-center"
             >
                 <div className="flex items-center space-x-6">
                     <Link href="/">
