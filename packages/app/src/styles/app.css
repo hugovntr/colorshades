@@ -134,6 +134,10 @@ html {
         @apply dark:bg-opacity-25 dark:text-primary-500 dark:hover:bg-primary-500 dark:hover:bg-opacity-100 dark:hover:text-primary-50;
     }
 
+    .button[disabled] {
+        @apply opacity-25 cursor-not-allowed;
+    }
+
     .field {
         @apply outline-none;
         @apply px-6 py-3;
