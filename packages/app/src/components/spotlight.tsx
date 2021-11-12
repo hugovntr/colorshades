@@ -78,6 +78,7 @@ export default function Spotlight({
 
     const handleActivation = (e: KeyboardEvent) => {
         if (e.metaKey && e.key === "k") {
+            e.preventDefault();
             setVisible((state) => !state);
         }
     };
