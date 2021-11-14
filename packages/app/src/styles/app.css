@@ -32,6 +32,8 @@ html {
         --color-primary-700: toTailwind(#577817);
         --color-primary-800: toTailwind(#49611a);
         --color-primary-900: toTailwind(#3a4a1a);
+
+        --color-secondary: toTailwind(#80e467);
     }
     *.dark {
         --color-page: toTailwind(#0a111e);
@@ -181,6 +183,25 @@ html {
 }
 
 @tailwind utilities;
+
+@layer utilities {
+    .text-combinations,
+    .bg-combinations {
+        --tw-gradient-from: rgba(var(--color-primary-500), 100);
+        --tw-gradient-stops: var(--tw-gradient-from),
+            var(--tw-gradient-to, rgba(var(--color-primary-500), 0));
+        --tw-gradient-to: rgba(
+            var(--color-opposite, var(--color-secondary)),
+            100
+        );
+    }
+    .text-combinations {
+        @apply bg-gradient-to-r bg-clip-text text-transparent;
+    }
+    .bg-combinations {
+        @apply bg-gradient-to-r;
+    }
+}
 
 code[class*="language-"],
 pre[class*="language-"] {

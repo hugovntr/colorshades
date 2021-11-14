@@ -419,9 +419,19 @@ function ColorCard({
     return (
         <div className="flex-1">
             <figure
-                className={`w-full h-16 rounded-lg transition-colors duration-300 cursor-pointer`}
+                className={`w-full h-16 flex items-end p-3 rounded-lg transition-colors duration-300 select-all`}
                 style={{ backgroundColor: color.rgb }}
-            ></figure>
+            >
+                <p
+                    className={
+                        color.isDark
+                            ? "text-white"
+                            : "text-strong dark:text-page"
+                    }
+                >
+                    {color.hex}
+                </p>
+            </figure>
             {withData && (
                 <div className="grid grid-cols-2 gap-2 mt-2">
                     <div>

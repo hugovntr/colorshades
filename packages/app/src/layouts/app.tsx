@@ -79,20 +79,31 @@ function Navigation(): JSX.Element {
                 className="container py-6 lg:mb-12 flex justify-between items-center"
             >
                 <div className="flex items-center space-x-6">
-                    <Link href="/">
+                    <Link href="/" prefetch={false}>
                         <a className="text-strong">
                             <ColorShadesIcon className="w-12 h-12" />
                         </a>
                     </Link>
 
                     <nav className="divide-x divide-smooth">
-                        <Link href="/">
+                        <Link href="/" prefetch={false}>
                             <a
                                 className={`px-3 font-medium ${
                                     asPath === "/" ? "text-primary-500" : ""
                                 }`}
                             >
                                 Shades
+                            </a>
+                        </Link>
+                        <Link href="/combinations" prefetch={false}>
+                            <a
+                                className={`px-3 font-medium ${
+                                    asPath.includes("combinations")
+                                        ? "text-primary-500"
+                                        : ""
+                                }`}
+                            >
+                                Combinations
                             </a>
                         </Link>
                         <Link
