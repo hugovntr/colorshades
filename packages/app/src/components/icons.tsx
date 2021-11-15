@@ -225,3 +225,30 @@ export function CommandIcon(props: IconProps): JSX.Element {
         </svg>
     );
 }
+
+export function MenuIcon(props: IconProps): JSX.Element {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            {...props}
+        >
+            <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6H20M4 12H20"
+            />
+            <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeOpacity={0.5}
+                strokeWidth={2}
+                d="M4 18H11"
+            />
+        </svg>
+    );
+}
