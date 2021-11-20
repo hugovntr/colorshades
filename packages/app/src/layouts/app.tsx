@@ -124,7 +124,7 @@ function Navigation(): JSX.Element {
                 >
                     <nav className="divide-x divide-accents">
                         {nav.map(({ name, href, isActive }) => (
-                            <Link href={href} prefetch={false}>
+                            <Link href={href} prefetch={false} key={href}>
                                 <a
                                     className={`px-3 font-medium ${
                                         isActive ? "text-primary-500" : ""
