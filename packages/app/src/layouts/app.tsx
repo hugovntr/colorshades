@@ -116,7 +116,7 @@ function Navigation(): JSX.Element {
                 </div>
 
                 <div
-                    className={`bg-page flex-1 md:relative absolute inset-x-0 bottom-0 pb-4 md:py-0 md:translate-y-0 md:opacity-100 md:pointer-events-auto transition duration-300 ${
+                    className={`bg-page md:bg-transparent flex-1 md:relative absolute inset-x-0 bottom-0 pb-4 md:py-0 md:translate-y-0 md:opacity-100 md:pointer-events-auto transition duration-300 ${
                         isOpen
                             ? "translate-y-full"
                             : "translate-y-0 opacity-0 pointer-events-none"

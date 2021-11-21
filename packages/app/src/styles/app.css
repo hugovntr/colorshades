@@ -34,6 +34,8 @@ html {
         --color-primary-900: toTailwind(#3a4a1a);
 
         --color-secondary: toTailwind(#80e467);
+
+        --pattern-color: rgba(toTailwind(#d1d5db), 0.8);
     }
     *.dark {
         --color-page: toTailwind(#0a111e);
@@ -42,6 +44,8 @@ html {
         --color-strong: toTailwind(#f3f4f6);
         --color-smooth: toTailwind(theme("colors.gray.700"));
         --color-accents: toTailwind(theme("colors.gray.800"));
+
+        --pattern-color: rgba(toTailwind(#242a33), 0.8);
     }
 
     ::selection {
@@ -56,6 +60,14 @@ html {
         letter-spacing: -0.011em;
         line-height: 1.75em;
         @apply bg-page text-foreground;
+        background-image: radial-gradient(
+                var(--pattern-color) 1px,
+                transparent 0
+            ),
+            radial-gradient(var(--pattern-color) 1px, transparent 0);
+        background-position: 30px 30px, 0 0;
+        background-size: 60px 60px;
+        margin: 0;
     }
 
     section {
