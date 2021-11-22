@@ -43,8 +43,10 @@ export default function CombinationsPage(): JSX.Element {
     return (
         <App title="Combinations | ColorShades">
             <Title />
-            <GetStarted />
-            <Showcase />
+            <div className="bg-page">
+                <GetStarted />
+                <Showcase />
+            </div>
         </App>
     );
 }

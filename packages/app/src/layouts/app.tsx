@@ -94,7 +94,7 @@ function Navigation(): JSX.Element {
     ];
 
     return (
-        <div>
+        <header>
             <div
                 id="nav"
                 className="container py-6 lg:mb-12 flex justify-between items-center relative"
@@ -140,39 +140,43 @@ function Navigation(): JSX.Element {
                     <SchemeSwitcher />
                 </div>
             </div>
-        </div>
+        </header>
     );
 }
 
 function Footer(): JSX.Element {
     return (
-        <footer className="container py-8 flex flex-col md:flex-row md:justify-between md:items-center">
-            <div className="flex flex-col md:flex-row items-center">
-                <ColorShadesIcon className="w-12 h-12 text-strong" />
-            </div>
-            <div className="flex items-center">
-                <div className="space-x-6 flex items-center">
-                    <Link
-                        href="https://github.com/hugovntr/colorshades"
-                        prefetch={false}
-                    >
-                        <a className="text-smooth hover:text-primary-500 transition-colors duration-150">
-                            <GithubIcon className="w-6 h-6" />
-                        </a>
-                    </Link>
-                    <Link href="https://twitter.com/hugovntr" prefetch={false}>
-                        <a
-                            className="text-smooth hover:text-primary-500 transition-colors duration-150"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <TwitterIcon className="w-6 h-6" />
-                        </a>
-                    </Link>
+        <footer className="bg-accents bg-opacity-20">
+            <div className="container py-8 flex flex-col md:flex-row md:justify-between md:items-center">
+                <div className="flex flex-col md:flex-row items-center">
+                    <ColorShadesIcon className="w-12 h-12 text-strong" />
                 </div>
-
-                <div className="ml-auto md:ml-6 md:border-l border-smooth pl-3">
-                    <SchemeSwitcher />
+                <div className="flex items-center">
+                    <div className="space-x-6 flex items-center">
+                        <Link
+                            href="https://github.com/hugovntr/colorshades"
+                            prefetch={false}
+                        >
+                            <a className="text-smooth hover:text-primary-500 transition-colors duration-150">
+                                <GithubIcon className="w-6 h-6" />
+                            </a>
+                        </Link>
+                        <Link
+                            href="https://twitter.com/hugovntr"
+                            prefetch={false}
+                        >
+                            <a
+                                className="text-smooth hover:text-primary-500 transition-colors duration-150"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <TwitterIcon className="w-6 h-6" />
+                            </a>
+                        </Link>
+                    </div>
+                    <div className="ml-auto md:ml-6 md:border-l border-smooth pl-3">
+                        <SchemeSwitcher />
+                    </div>
                 </div>
             </div>
         </footer>
