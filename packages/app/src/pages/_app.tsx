@@ -1,3 +1,4 @@
+import CombinationsProvider from "@/contexts/CombinationsContext";
 import SchemeProvider from "@/contexts/SchemeContext";
 import ShadesProvider from "@/contexts/ShadesContext";
 import { useEffect } from "react";
@@ -12,7 +13,9 @@ export default function MyApp({ Component, pageProps }) {
     return (
         <SchemeProvider>
             <ShadesProvider>
-                <Component {...pageProps} />
+                <CombinationsProvider>
+                    <Component {...pageProps} />
+                </CombinationsProvider>
             </ShadesProvider>
         </SchemeProvider>
     );

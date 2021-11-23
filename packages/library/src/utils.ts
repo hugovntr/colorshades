@@ -20,6 +20,14 @@ export function tf(num: number) {
     return Math.round(num * 100) / 100;
 }
 
+export function incrementHue(from: number, by: number): number {
+    return from + by > 360 ? from + by - 360 : from + by;
+}
+
+export function decrementHue(from: number, by: number): number {
+    return from - by < 0 ? 360 + (from - by) : from - by;
+}
+
 export function hexToRgb(hex: string): Rgb {
     hex = hex.replace("#", "");
     if (hex.length === 3) {

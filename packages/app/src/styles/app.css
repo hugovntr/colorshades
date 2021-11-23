@@ -32,6 +32,10 @@ html {
         --color-primary-700: toTailwind(#577817);
         --color-primary-800: toTailwind(#49611a);
         --color-primary-900: toTailwind(#3a4a1a);
+
+        --color-secondary: toTailwind(#80e467);
+
+        --pattern-color: rgba(toTailwind(#d1d5db), 0.8);
     }
     *.dark {
         --color-page: toTailwind(#0a111e);
@@ -40,6 +44,8 @@ html {
         --color-strong: toTailwind(#f3f4f6);
         --color-smooth: toTailwind(theme("colors.gray.700"));
         --color-accents: toTailwind(theme("colors.gray.800"));
+
+        --pattern-color: rgba(toTailwind(#242a33), 0.8);
     }
 
     ::selection {
@@ -54,6 +60,14 @@ html {
         letter-spacing: -0.011em;
         line-height: 1.75em;
         @apply bg-page text-foreground;
+        background-image: radial-gradient(
+                var(--pattern-color) 1px,
+                transparent 0
+            ),
+            radial-gradient(var(--pattern-color) 1px, transparent 0);
+        background-position: 30px 30px, 0 0;
+        background-size: 60px 60px;
+        margin: 0;
     }
 
     section {
@@ -134,6 +148,31 @@ html {
         @apply dark:bg-opacity-25 dark:text-primary-500 dark:hover:bg-primary-500 dark:hover:bg-opacity-100 dark:hover:text-primary-50;
     }
 
+    .button[disabled] {
+        @apply bg-primary-500 bg-opacity-20 text-primary-500 cursor-not-allowed hover:bg-opacity-20;
+    }
+
+    .button.sliding {
+        @apply h-12 overflow-hidden relative p-0 hover:bg-opacity-100;
+        @apply w-12 hover:w-full;
+        transition-property: color, background-color, width;
+        transition-duration: 500ms;
+        transition-timing-function: cubic-bezier(0.6, 0.5, 0, 0.5);
+    }
+    .button.sliding .button__icon {
+        @apply absolute inset-y-0 left-0 p-3 rounded-full;
+    }
+    .button.sliding .button__label {
+        @apply ml-10 mr-4;
+        @apply opacity-0 translate-x-4 whitespace-nowrap;
+        @apply transition duration-200 ease-linear;
+    }
+    .button.sliding:hover .button__label {
+        @apply opacity-100 translate-x-0;
+        @apply transition duration-200 ease-linear;
+        transition-delay: 300ms;
+    }
+
     .field {
         @apply outline-none;
         @apply px-6 py-3;
@@ -177,6 +216,25 @@ html {
 }
 
 @tailwind utilities;
+
+@layer utilities {
+    .text-combinations,
+    .bg-combinations {
+        --tw-gradient-from: rgba(var(--color-primary-500), 100);
+        --tw-gradient-stops: var(--tw-gradient-from),
+            var(--tw-gradient-to, rgba(var(--color-primary-500), 0));
+        --tw-gradient-to: rgba(
+            var(--color-opposite, var(--color-secondary)),
+            100
+        );
+    }
+    .text-combinations {
+        @apply bg-gradient-to-r bg-clip-text text-transparent;
+    }
+    .bg-combinations {
+        @apply bg-gradient-to-r;
+    }
+}
 
 code[class*="language-"],
 pre[class*="language-"] {

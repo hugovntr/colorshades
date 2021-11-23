@@ -16,10 +16,12 @@ export default function Index(): JSX.Element {
     return (
         <App>
             <Title />
-            <GetStarted />
-            <ShadesShowcase />
-            <HowItWorks />
-            <Share />
+            <div className="bg-page">
+                <GetStarted />
+                <ShadesShowcase />
+                <HowItWorks />
+                <Share />
+            </div>
         </App>
     );
 }

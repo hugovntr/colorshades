@@ -225,3 +225,186 @@ export function CommandIcon(props: IconProps): JSX.Element {
         </svg>
     );
 }
+
+export function MenuIcon(props: IconProps): JSX.Element {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            {...props}
+        >
+            <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6H20M4 12H20"
+            />
+            <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeOpacity={0.5}
+                strokeWidth={2}
+                d="M4 18H11"
+            />
+        </svg>
+    );
+}
+
+export function AdjacentColorsIcon(props: IconProps): JSX.Element {
+    return (
+        <svg fill="none" viewBox="0 0 24 24" {...props}>
+            <circle
+                cx={12}
+                cy={12}
+                r={11}
+                stroke="currentColor"
+                strokeOpacity={0.1}
+                strokeWidth={2}
+            />
+            <circle
+                cx={12}
+                cy={12}
+                r={8.5}
+                stroke="currentColor"
+                strokeOpacity={0.2}
+                strokeWidth={3}
+            />
+            <circle cx={12} cy={5} r={2} fill="currentColor" />
+            <circle cx={18} cy={8} r={2} fill="currentColor" />
+            <circle cx={6} cy={8} r={2} fill="currentColor" />
+            <path fill="currentColor" d="M11.5 8H12.5L12 14L11.5 8Z" />
+            <path
+                fill="currentColor"
+                fillOpacity={0.5}
+                d="M16 9.5L16.5 10L12 14L16 9.5Z"
+            />
+            <path
+                fill="currentColor"
+                fillOpacity={0.5}
+                d="M7.99999 9.5L7.53479 10L12 14L7.99999 9.5Z"
+            />
+        </svg>
+    );
+}
+
+export function TriadicColorsIcon(props: IconProps): JSX.Element {
+    return (
+        <svg fill="none" viewBox="0 0 24 24" {...props}>
+            <circle
+                cx={12}
+                cy={12}
+                r={11}
+                stroke="currentColor"
+                strokeOpacity={0.1}
+                strokeWidth={2}
+            />
+            <circle
+                cx={12}
+                cy={12}
+                r={8.5}
+                stroke="currentColor"
+                strokeOpacity={0.2}
+                strokeWidth={3}
+            />
+            <path fill="currentColor" d="M11.5 8H12.5L12 13L11.5 8Z" />
+            <path
+                fill="currentColor"
+                fillOpacity={0.5}
+                d="M15.4841 15.326L15.9342 14.5236L12 13L15.4841 15.326Z"
+            />
+            <path
+                fill="currentColor"
+                fillOpacity={0.5}
+                d="M8.59338 15.326L8.14331 14.5236L12 13L8.59338 15.326Z"
+            />
+            <circle cx={12} cy={5} r={2} fill="currentColor" />
+            <circle
+                r={2}
+                fill="currentColor"
+                transform="matrix(1 0 0 -1 18 16)"
+            />
+            <circle cx={6} cy={16} r={2} fill="currentColor" />
+        </svg>
+    );
+}
+
+export function TetradicColorsIcon(props: IconProps): JSX.Element {
+    return (
+        <svg fill="none" viewBox="0 0 24 24" {...props}>
+            <circle
+                cx={12}
+                cy={12}
+                r={11}
+                stroke="currentColor"
+                strokeOpacity={0.1}
+                strokeWidth={2}
+            />
+            <circle
+                cx={12}
+                cy={12}
+                r={8.5}
+                stroke="currentColor"
+                strokeOpacity={0.2}
+                strokeWidth={3}
+            />
+            <circle cx={12} cy={5} r={2} fill="currentColor" />
+            <circle
+                r={2}
+                fill="currentColor"
+                transform="matrix(1 0 0 -1 12 19)"
+            />
+            <circle cx={18} cy={8} r={2} fill="currentColor" />
+            <circle cx={6} cy={16} r={2} fill="currentColor" />
+            <path fill="currentColor" d="M11.5 8H12.5L12 12L11.5 8Z" />
+            <path
+                fill="currentColor"
+                fillOpacity={0.5}
+                d="M15.1187 9.44586L15.6515 10.2921L12 12L15.1187 9.44586Z"
+            />
+            <path fill="currentColor" d="M11.5 16H12.5L12 12L11.5 16Z" />
+            <path
+                fill="currentColor"
+                fillOpacity={0.5}
+                d="M8.34854 13.7078L8.88129 14.5541L12 12L8.34854 13.7078Z"
+            />
+        </svg>
+    );
+}
+
+export function OppositeColorsIcon(props: IconProps): JSX.Element {
+    return (
+        <svg fill="none" viewBox="0 0 24 24" {...props}>
+            <circle
+                cx={12}
+                cy={12}
+                r={11}
+                stroke="currentColor"
+                strokeOpacity={0.1}
+                strokeWidth={2}
+            />
+            <circle
+                cx={12}
+                cy={12}
+                r={8.5}
+                stroke="currentColor"
+                strokeOpacity={0.2}
+                strokeWidth={3}
+            />
+            <circle cx={12} cy={5} r={2} fill="currentColor" />
+            <circle
+                r={2}
+                fill="currentColor"
+                transform="matrix(1 0 0 -1 12 19)"
+            />
+            <path fill="currentColor" d="M11.5 8H12.5L12 12L11.5 8Z" />
+            <path
+                fill="currentColor"
+                fillOpacity={0.5}
+                d="M11.5 16H12.5L12 12L11.5 16Z"
+            />
+        </svg>
+    );
+}

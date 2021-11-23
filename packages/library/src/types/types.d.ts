@@ -1,29 +1,6 @@
-type Color = {
-    red: number;
-    green: number;
-    blue: number;
-
-    hue: number;
-    saturation: number;
-    luminance: number;
-
-    hex: string;
-    rgb: string;
-    hsl: string;
-
-    index: number;
-    brightness: number;
-    isDark: boolean;
-    isGray: boolean;
-
-    toString: () => string;
-    toJSON: () => { [key: number]: string };
-};
-
-type Shades = {
-    colors: Color[];
-    name: string;
-};
+import type { Combination } from "../combinations";
+import type { Color } from "../colors";
+import type { Shades } from "../shades";
 
 type HueBoundary = {
     name: string;

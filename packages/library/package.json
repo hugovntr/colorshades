@@ -30,12 +30,11 @@
         "colorshades"
     ],
     "scripts": {
-        "dev": "tsc --watch",
-        "build": "tsc --build",
-        "swcify": "swc src --out-dir dist --sync",
+        "dev": "swc src --out-dir dist --watch",
+        "build": "rimraf ./dist && swc src --out-dir dist --sync",
         "types": "tsc --declaration --emitDeclarationOnly --declarationDir dist --esModuleInterop",
         "boundaries": "ts-node -O '{\"module\":\"commonjs\"}' scripts/boundaries.ts",
-        "preversion": "yarn boundaries && yarn swcify && yarn types",
+        "preversion": "yarn boundaries && yarn build && yarn types",
         "prepublish": "yarn preversion"
     },
     "engines": {
@@ -44,6 +43,8 @@
     "devDependencies": {
         "@swc/cli": "^0.1.51",
         "@swc/core": "^1.2.106",
+        "chokidar": "^3.5.2",
+        "rimraf": "^3.0.2",
         "tailwindcss": "^2.2.19",
         "ts-node": "^10.4.0",
         "typescript": "^4.4.4"
