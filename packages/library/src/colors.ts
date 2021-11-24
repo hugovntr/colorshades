@@ -1,7 +1,9 @@
 import { getBoundaries } from "./schema";
-import { getBrightness, hexToRgb, rgbToHsl } from "./utils";
+import { getBrightness, hexToRgb, hslToRgb, rgbToHex, rgbToHsl } from "./utils";
 
-import type { Rgb } from "./utils";
+import type { Rgb, Hsl } from "./utils";
+
+export type ColorInput = string | Hsl | Rgb;
 
 export type Color = {
     red: number;
@@ -39,10 +41,10 @@ export class ColorManager implements Color {
     isDark: boolean;
     isGray: boolean;
 
-    constructor(input: string, public index: number = 0) {
-        const rgb = hexToRgb(input);
+    constructor(input: ColorInput, public index: number = 0) {
+        const rgb = inputToRgb(input);
 
-        this.hex = input.startsWith("#") ? input : `#${input}`;
+        this.hex = `#${rgbToHex(rgb)}`;
         this.setRgb(rgb);
         this.setHsl(rgb);
 
@@ -94,4 +96,22 @@ export class ColorManager implements Color {
     toJSON(): { [key: number]: string } {
         return { [this.index]: this.hex };
     }
+}
+
+function inputToRgb(input: ColorInput): Rgb {
+    if (typeof input == "string") {
+        return hexToRgb(input);
+    }
+
+    if (isHsl(input)) {
+        console.log(hslToRgb(input));
+
+        return hslToRgb(input);
+    } else {
+        return input;
+    }
+}
+
+function isHsl(input: any): input is Hsl {
+    return input.h !== undefined;
 }
