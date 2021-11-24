@@ -1,4 +1,4 @@
-import { Color, ColorManager } from "./colors";
+import { Color, ColorInput, ColorManager } from "./colors";
 import { Shades, ShadesManager } from "./shades";
 
 import {
@@ -8,30 +8,41 @@ import {
     Combination,
 } from "./combinations";
 
-export type { Color, Shades, Combination, CombinationType, CombinationOptions };
+export type {
+    Color,
+    ColorInput,
+    Shades,
+    Combination,
+    CombinationType,
+    CombinationOptions,
+};
 
-export function createColor(input: string, index: number = 0): Color {
+export function createColor(input: ColorInput, index: number = 0): Color {
     return new ColorManager(input, index);
 }
 
 export function createCombination(
-    input: string | Color,
+    input: ColorInput | Color,
     type: CombinationType,
     options?: CombinationOptions
 ): Combination {
     return new CombinationManager(
-        typeof input == "string" ? new ColorManager(input) : input,
+        input instanceof ColorManager
+            ? input
+            : new ColorManager(input as ColorInput),
         type,
         options
     );
 }
 
 export default function createShades(
-    input: string | Color,
+    input: ColorInput | Color,
     count: number = 10
 ): Shades {
     return new ShadesManager(
-        typeof input == "string" ? new ColorManager(input) : input,
+        input instanceof ColorManager
+            ? input
+            : new ColorManager(input as ColorInput),
         count
     );
 }
