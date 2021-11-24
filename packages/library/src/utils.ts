@@ -153,6 +153,7 @@ export function hslToRgb(hsl: Hsl): Rgb {
         b: Math.round(b),
     };
 }
+
 function hueToRgb(t1: number, t2: number, hue: number): number {
     if (hue < 0) hue += 6;
     if (hue >= 6) hue -= 6;
