@@ -215,23 +215,143 @@ html {
     }
 
     .picker {
-        width: 200px;
-        height: 200px;
+        --picker-selected-hue: 0;
+        --picker-selected-saturation: 0%;
+        --picker-selected-luminance: 0%;
+
+        width: 13rem;
         display: flex;
         flex-direction: column;
+        @apply bg-background rounded-xl;
     }
     .picker .picker__spectrum {
         flex-grow: 1;
+        min-height: 10rem;
         width: 100%;
         background-image: linear-gradient(0deg, #000, transparent),
             linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
         border-radius: 0.75rem 0.75rem 0 0;
     }
-    .picker .picker__hue {
+    .picker .picker__display {
+        flex-grow: 1;
+        min-height: 8rem;
         width: 100%;
-        height: 2rem;
-        background: #a5df36;
-        border-radius: 0 0 0.75rem 0.75rem;
+        border-radius: 0.75rem 0.75rem 0 0;
+        background-color: hsl(
+            var(--picker-selected-hue),
+            var(--picker-selected-saturation),
+            var(--picker-selected-luminance)
+        );
+    }
+    .picker .picker-slider > input[type="range"] {
+        appearance: none;
+        width: 100%;
+        height: 1rem;
+        @apply bg-accents rounded-full;
+    }
+    .picker .picker-slider > input[type="range"]::-moz-range-thumb {
+        @apply box-content;
+        appearance: none;
+        height: 1rem;
+        width: 1rem;
+        border: 3px solid #fff;
+        border-radius: 100vh;
+        background-color: hsl(
+            var(--picker-selected-hue),
+            var(--picker-selected-saturation),
+            var(--picker-selected-luminance)
+        );
+        @apply shadow-md;
+    }
+    .picker .picker-slider > input[type="range"]::-webkit-slider-thumb {
+        @apply box-content;
+        appearance: none;
+        height: 1rem;
+        width: 1rem;
+        border: 3px solid #fff;
+        border-radius: 100vh;
+        background-color: hsl(
+            var(--picker-selected-hue),
+            var(--picker-selected-saturation),
+            var(--picker-selected-luminance)
+        );
+        @apply shadow-md;
+    }
+    .picker .picker-slider > input[type="range"].picker-slider__hue {
+        background: linear-gradient(
+            to right,
+            hsl(
+                    0,
+                    var(--picker-selected-saturation),
+                    var(--picker-selected-luminance)
+                )
+                0%,
+            hsl(
+                    60,
+                    var(--picker-selected-saturation),
+                    var(--picker-selected-luminance)
+                )
+                17%,
+            hsl(
+                    120,
+                    var(--picker-selected-saturation),
+                    var(--picker-selected-luminance)
+                )
+                33%,
+            hsl(
+                    180,
+                    var(--picker-selected-saturation),
+                    var(--picker-selected-luminance)
+                )
+                50%,
+            hsl(
+                    240,
+                    var(--picker-selected-saturation),
+                    var(--picker-selected-luminance)
+                )
+                67%,
+            hsl(
+                    300,
+                    var(--picker-selected-saturation),
+                    var(--picker-selected-luminance)
+                )
+                83%,
+            hsl(
+                    360,
+                    var(--picker-selected-saturation),
+                    var(--picker-selected-luminance)
+                )
+                100%
+        );
+    }
+    .picker .picker-slider > input[type="range"].picker-slider__saturation {
+        --saturation-gradient-from: hsl(
+            var(--picker-selected-hue),
+            0%,
+            var(--picker-selected-luminance)
+        );
+        --saturation-gradient-to: hsl(
+            var(--picker-selected-hue),
+            100%,
+            var(--picker-selected-luminance)
+        );
+        background-image: linear-gradient(
+            90deg,
+            var(--saturation-gradient-from),
+            var(--saturation-gradient-to)
+        );
+    }
+    .picker .picker-slider > input[type="range"].picker-slider__luminance {
+        background-image: linear-gradient(
+            90deg,
+            #000,
+            hsl(
+                var(--picker-selected-hue),
+                var(--picker-selected-saturation),
+                50%
+            ),
+            #fff
+        );
     }
 }
 
